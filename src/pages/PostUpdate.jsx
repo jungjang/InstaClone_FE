@@ -1,7 +1,7 @@
 import React from "react";
 
 const PostUpdate = () => {
-  return <div></div>;
+  return <div>PostUpdate</div>;
 };
 
 export default PostUpdate;
