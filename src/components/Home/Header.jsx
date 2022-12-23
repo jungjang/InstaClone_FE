@@ -67,7 +67,7 @@ const StHeadMenu = styled.div`
   width: 100%;
   height: 100vh;
   gap: 50px;
-  margin: 20px 0 0 10px;
+  margin: 20px 0 0 0px;
 `;
 
 const StImgTextWrap = styled.div`
