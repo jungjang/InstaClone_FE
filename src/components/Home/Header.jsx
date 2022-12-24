@@ -55,9 +55,9 @@ const Header = () => {
 export default Header;
 
 const StHeaderWrap = styled.div`
-  position: fixed;
+  /* position: fixed; */
   top: 0;
-  width: 220px;
+  width: 250px;
   border: 1px solid red;
 `;
 
@@ -71,6 +71,7 @@ const StHeadMenu = styled.div`
 `;
 
 const StImgTextWrap = styled.div`
+  margin-left: 20px;
   display: flex;
   flex-direction: column;
   gap: 30px;
