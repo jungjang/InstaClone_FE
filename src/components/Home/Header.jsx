@@ -54,7 +54,6 @@ const StHeaderWrap = styled.div`
   /* position: fixed; */
   top: 0;
   width: 250px;
-  border: 1px solid red;
 `;
 
 const StHeadMenu = styled.div`
