@@ -69,7 +69,7 @@ const StPostButton = styled.button`
   border: none;
   font-size: 14px;
   font-weight: bold;
-  color: #5b5bcf;
+  color: #0095f6;
 `;
 
 const StPreviewImg = styled.img`
