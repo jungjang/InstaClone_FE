@@ -86,6 +86,7 @@ const StPostCardBody = styled.div`
 `;
 
 const StPostCard = styled.div`
+  background-color: white;
   border: 1px solid orange;
   border-radius: 10px;
   width: 465px;

@@ -19,6 +19,7 @@ const Home = () => {
 export default Home;
 
 const StHome = styled.div`
+  background-color: #fafafa;
   display: flex;
   flex-direction: row;
 `;
@@ -26,6 +27,6 @@ const StHome = styled.div`
 const StPostCardList = styled.div`
   display: flex;
   justify-content: flex-start;
-  margin: 0 auto 0 10%;
+  margin: 0 auto 0 auto;
   /* align-items: center; */
 `;
