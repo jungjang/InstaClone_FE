@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import useNavigate from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Update = () => {
+  const navigate = useNavigate();
   // const [imageSrc, setImageSrc] = useState("");
 
   // const encodeFileToBase64 = (fileblob) => {
@@ -30,7 +31,10 @@ const Update = () => {
           <div name="뒤로가기버튼">
             <StImg
               alt="go main button"
-              src="img/back.png" /*onClick={() => {navigate("/")}*/
+              src="img/back.png"
+              onClick={() => {
+                navigate("/");
+              }}
             />
           </div>
           <StPostHeaderText>게시글 수정</StPostHeaderText>
@@ -87,6 +91,14 @@ const StPostContainer = styled.div`
 
 const StImg = styled.img`
   width: 25px;
+  &:hover {
+    transform: scale(1.1);
+    font-size: 17px;
+  }
+  &:active {
+    transform: scale(0.9);
+    font-size: 15px;
+  }
 `;
 
 const StPostHeader = styled.div`
