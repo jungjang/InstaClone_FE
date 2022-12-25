@@ -66,7 +66,7 @@ const StHeadMenu = styled.div`
 `;
 
 const StImgTextWrap = styled.div`
-  margin: 0 10px 0 10px;
+  margin: 0 10px 0 0;
   display: flex;
   flex-direction: column;
   gap: 30px;
