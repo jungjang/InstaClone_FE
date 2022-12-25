@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+
 import Header from "../components/Home/Header";
 import PostCard from "../components/Home/PostCard";
+import Post from "../components/PostCreate/Post";
+import CardList from "../components/Home/CardList";
 
 const Home = () => {
+  const [viewPostModal, setViewPostModal] = useState(false);
+
   return (
     <>
       <StHome>
-        <Header />
+        <Header setViewPostModal={setViewPostModal} />
         <StPostCardList>
-          <PostCard />
+          <CardList />
         </StPostCardList>
+        {viewPostModal && <Post setViewPostModal={setViewPostModal} />}
       </StHome>
     </>
   );
