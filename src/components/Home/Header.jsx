@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const Header = () => {
+const Header = (props) => {
   const navigate = useNavigate();
+
+  //모달창 on / off
+  const showViewPostModal = () => {
+    props.setViewPostModal(true);
+  };
+
   return (
     <>
       <StHeaderWrap>
@@ -25,10 +31,7 @@ const Header = () => {
               <div>홈</div>
             </StImgWrap>
 
-            <StImgWrap
-              name="create icon & 만들기"
-              onClick={() => navigate("/post")}
-            >
+            <StImgWrap name="create icon & 만들기" onClick={showViewPostModal}>
               <StImg alt="만들기용 + 아이콘" src="img/article_img.png" />
               <div>만들기</div>
             </StImgWrap>
