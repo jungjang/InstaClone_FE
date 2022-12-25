@@ -34,17 +34,18 @@ const Post = (props) => {
 
   return (
     <>
-      <StPostAll>
-        <StPostContainer name="포스트 전체 랩">
+      <StPostAll onClick={closeViewPostModal}>
+        <StPostContainer
+          //propagation쓰면 부모 태그에게 이벤트 전파막음
+          onClick={(event) => event.stopPropagation()}
+          name="포스트 전체 랩"
+        >
           <StPostHeader name="포스트 헤더 탭">
             <div name="뒤로가기버튼">
               <StImg
                 alt="go main button"
                 src="img/back.png"
                 onClick={closeViewPostModal}
-                // onClick={() => {
-                //   navigate("/");
-                // }}
               />
             </div>
             <StPostHeaderText>새 게시물 만들기</StPostHeaderText>
