@@ -1,9 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-const Post = () => {
+const Post = (props) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  //모달창 on / off
+  const closeViewPostModal = () => {
+    props.setViewPostModal(false);
+  };
+
   const [imageSrc, setImageSrc] = useState("");
 
   const encodeFileToBase64 = (fileblob) => {
@@ -26,43 +34,80 @@ const Post = () => {
 
   return (
     <>
-      <StPostContainer name="포스트 전체 랩">
-        <StPostHeader name="포스트 헤더 탭">
-          <div name="뒤로가기버튼">
-            <StImg
-              alt="go main button"
-              src="img/back.png"
-              onClick={() => {
-                navigate("/");
-              }}
-            />
-          </div>
-          <StPostHeaderText>새 게시물 만들기</StPostHeaderText>
-          <div>
-            <StPostButton>공유하기</StPostButton>
-          </div>
-        </StPostHeader>
-        <StPostBody name="포스트 사진, 본문 들어갈 자리">
-          <StPostImgBox>
-            {imageSrc && <StPreviewImg src={imageSrc} alt="preview-img" />}
-            <input
-              type="file"
-              accept="image/*"
-              name="post_img"
-              onChange={onChangeImage}
-            />
-          </StPostImgBox>
-          <StPostContent name="본문아이디, 텍스트 탭">
-            <StNicknameArea>아이디 들어갈 자리</StNicknameArea>
-            <StTextArea>본문 들어갈 자리</StTextArea>
-          </StPostContent>
-        </StPostBody>
-      </StPostContainer>
+      <StPostAll>
+        <StPostContainer name="포스트 전체 랩">
+          <StPostHeader name="포스트 헤더 탭">
+            <div name="뒤로가기버튼">
+              <StImg
+                alt="go main button"
+                src="img/back.png"
+                onClick={closeViewPostModal}
+                // onClick={() => {
+                //   navigate("/");
+                // }}
+              />
+            </div>
+            <StPostHeaderText>새 게시물 만들기</StPostHeaderText>
+            <div>
+              <StPostButton>공유하기</StPostButton>
+            </div>
+          </StPostHeader>
+          <StPostBody name="포스트 사진, 본문 들어갈 자리">
+            <StPostImgBox>
+              {imageSrc && <StPreviewImg src={imageSrc} alt="preview-img" />}
+              <input
+                type="file"
+                accept="image/*"
+                name="post_img"
+                onChange={onChangeImage}
+              />
+            </StPostImgBox>
+            <StPostContent name="본문아이디, 텍스트 탭">
+              <StNicknameArea>아이디 들어갈 자리</StNicknameArea>
+              <StTextArea>본문 들어갈 자리</StTextArea>
+            </StPostContent>
+          </StPostBody>
+        </StPostContainer>
+      </StPostAll>
     </>
   );
 };
 
 export default Post;
+
+const StPostAll = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+`;
+
+//모달창 뜰 때 fade in
+const LoadEffect = keyframes`
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+`;
+
+//모달창을 화면 중앙 최상단에 노출
+const StPostContainer = styled.div`
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 750px;
+  height: 545px;
+  //모달창 중앙배치
+  position: absolute;
+  top: 50%;
+  left: 56%;
+  transform: translate(-50%, -50%);
+  animation: ${LoadEffect} 0.3s ease-in-out;
+`;
 
 const StPostHeaderText = styled.div`
   font-weight: bold;
@@ -74,31 +119,32 @@ const StPostButton = styled.button`
   font-size: 14px;
   font-weight: bold;
   color: #0095f6;
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
 `;
 
 const StPreviewImg = styled.img`
   width: 500px;
 `;
 
-const StPostContainer = styled.div`
-  border: 1px solid black;
-  border-radius: 10px;
-  width: 750px;
-`;
-
 const StImg = styled.img`
   width: 25px;
   &:hover {
     transform: scale(1.1);
-    font-size: 17px;
   }
   &:active {
     transform: scale(0.9);
-    font-size: 15px;
   }
 `;
 
 const StPostHeader = styled.div`
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  background-color: white;
   display: flex;
   height: 40px;
   padding: 0 10px 0 10px;
@@ -107,6 +153,8 @@ const StPostHeader = styled.div`
 `;
 
 const StPostBody = styled.div`
+  background-color: white;
+
   justify-content: space-between;
   display: flex;
   border: 1px solid red;
