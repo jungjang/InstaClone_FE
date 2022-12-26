@@ -34,49 +34,49 @@ const Post = (props) => {
 
   return (
     <>
-      <PostAll onClick={closeViewPostModal}>
-        <PostContainer
+      <StPostAll onClick={closeViewPostModal}>
+        <StPostContainer
           //propagation쓰면 부모 태그에게 이벤트 전파막음
           onClick={(event) => event.stopPropagation()}
           name="포스트 전체 랩"
         >
-          <PostHeader name="포스트 헤더 탭">
+          <StPostHeader name="포스트 헤더 탭">
             <div name="뒤로가기버튼">
-              <Img
+              <StImg
                 alt="go main button"
                 src="img/back.png"
                 onClick={closeViewPostModal}
               />
             </div>
-            <PostHeaderText>새 게시물 만들기</PostHeaderText>
+            <StPostHeaderText>새 게시물 만들기</StPostHeaderText>
             <div>
-              <PostButton>공유하기</PostButton>
+              <StPostButton>공유하기</StPostButton>
             </div>
-          </PostHeader>
-          <PostBody name="포스트 사진, 본문 들어갈 자리">
-            <PostImgBox>
-              {imageSrc && <PreviewImg src={imageSrc} alt="preview-img" />}
+          </StPostHeader>
+          <StPostBody name="포스트 사진, 본문 들어갈 자리">
+            <StPostImgBox>
+              {imageSrc && <StPreviewImg src={imageSrc} alt="preview-img" />}
               <input
                 type="file"
                 accept="image/*"
                 name="post_img"
                 onChange={onChangeImage}
               />
-            </PostImgBox>
-            <PostContent name="본문아이디, 텍스트 탭">
-              <NicknameArea>아이디 들어갈 자리</NicknameArea>
-              <TextArea>본문 들어갈 자리</TextArea>
-            </PostContent>
-          </PostBody>
-        </PostContainer>
-      </PostAll>
+            </StPostImgBox>
+            <StPostContent name="본문아이디, 텍스트 탭">
+              <StNicknameArea>아이디 들어갈 자리</StNicknameArea>
+              <StTextArea>본문 들어갈 자리</StTextArea>
+            </StPostContent>
+          </StPostBody>
+        </StPostContainer>
+      </StPostAll>
     </>
   );
 };
 
 export default Post;
 
-const PostAll = styled.div`
+const StPostAll = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -97,7 +97,7 @@ const LoadEffect = keyframes`
 `;
 
 //모달창을 화면 중앙 최상단에 노출
-const PostContainer = styled.div`
+const StPostContainer = styled.div`
   border: 1px solid black;
   border-radius: 10px;
   width: 750px;
@@ -110,11 +110,11 @@ const PostContainer = styled.div`
   animation: ${LoadEffect} 0.3s ease-in-out;
 `;
 
-const PostHeaderText = styled.div`
+const StPostHeaderText = styled.div`
   font-weight: bold;
 `;
 
-const PostButton = styled.button`
+const StPostButton = styled.button`
   background-color: white;
   border: none;
   font-size: 14px;
@@ -128,11 +128,11 @@ const PostButton = styled.button`
   }
 `;
 
-const PreviewImg = styled.img`
+const StPreviewImg = styled.img`
   width: 500px;
 `;
 
-const Img = styled.img`
+const StImg = styled.img`
   width: 25px;
   &:hover {
     transform: scale(1.1);
@@ -142,7 +142,7 @@ const Img = styled.img`
   }
 `;
 
-const PostHeader = styled.div`
+const StPostHeader = styled.div`
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   background-color: white;
@@ -153,7 +153,7 @@ const PostHeader = styled.div`
   justify-content: space-between;
 `;
 
-const PostBody = styled.div`
+const StPostBody = styled.div`
   background-color: white;
 
   justify-content: space-between;
@@ -163,14 +163,14 @@ const PostBody = styled.div`
   border-bottom-left-radius: 10px;
 `;
 
-const PostImgBox = styled.div`
+const StPostImgBox = styled.div`
   border: 1px solid white;
   height: 500px;
   width: 500px;
   border-bottom-left-radius: 10px;
 `;
 
-const PostContent = styled.div`
+const StPostContent = styled.div`
   border: 1px solid blue;
   border-bottom-right-radius: 10px;
 
@@ -178,7 +178,7 @@ const PostContent = styled.div`
   width: 250px;
 `;
 
-const NicknameArea = styled.div`
+const StNicknameArea = styled.div`
   border: 1px solid purple;
   width: 240px;
   height: 30px;
@@ -188,7 +188,7 @@ const NicknameArea = styled.div`
   font-weight: bold;
 `;
 
-const TextArea = styled.textarea`
+const StTextArea = styled.textarea`
   width: 90%;
   border: 1px solid orange;
   height: 85%;

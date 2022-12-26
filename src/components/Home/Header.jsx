@@ -17,80 +17,83 @@ const Header = (props) => {
 
   return (
     <>
-      <HeaderWrap>
+      <StHeaderWrap>
         <div name="menu별스타그램아이콘">
-          <Logo
+          <StLogo
             alt="별스타그램아이콘"
             src="img/logo_img.png" /*onClick={() => {navigate("/")}*/
           />
         </div>
-        <HeadMenu>
-          <ImgTextWrap name="headerwrap">
-            <ImgWrap
+        <StHeadMenu>
+          <StImgTextWrap name="headerwrap">
+            <StImgWrap
               name="home icon & 홈"
               onClick={() => {
                 navigate("/");
               }}
             >
-              <Img alt="home buttom icon" src="img/home_img.png" />
+              <StImg alt="home buttom icon" src="img/home_img.png" />
               <div>홈</div>
-            </ImgWrap>
+            </StImgWrap>
             {token ? (
-              <ImgWrap name="create icon & 만들기" onClick={showViewPostModal}>
-                <Img alt="만들기용 + 아이콘" src="img/article_img.png" />
+              <StImgWrap
+                name="create icon & 만들기"
+                onClick={showViewPostModal}
+              >
+                <StImg alt="만들기용 + 아이콘" src="img/article_img.png" />
                 <div>만들기</div>
-              </ImgWrap>
+              </StImgWrap>
             ) : null}
             {token ? (
-              <ImgWrap
+              <StImgWrap
                 name="profile icon & 프로필"
                 onClick={() => navigate("/mypage")}
               >
-                <Img alt="profile icon" src="img/profile_img.png" />
+                <StImg alt="profile icon" src="img/profile_img.png" />
                 <div>프로필</div>
-              </ImgWrap>
+              </StImgWrap>
             ) : null}
-          </ImgTextWrap>
+          </StImgTextWrap>
           {/* 토큰 유무에 따라 로그인/로그아웃 버튼 보여주는 태그 */}
-          <LogInOutWrap>
+          <StLogInOutWrap>
             {token ? (
-              <LogInOutTextWrap
+              <StLogInOutTextWrap
                 name="로그아웃 아이콘"
                 /*onClick={토큰 지워주는 함수 들어갈 자리}*/
               >
-                <Img alt="로그아웃 아이콘" src="img/logout.png" />
+                <StImg alt="로그아웃 아이콘" src="img/logout.png" />
                 <div>로그아웃</div>
-              </LogInOutTextWrap>
+              </StLogInOutTextWrap>
             ) : (
-              <LogInOutTextWrap
+              <StLogInOutTextWrap
                 name="로그인 아이콘"
                 onClick={() => navigate("/signin")}
               >
-                <Img alt="로그인 아이콘" src="img/login.png" />
+                <StImg alt="로그인 아이콘" src="img/login.png" />
                 <div>로그인</div>
-              </LogInOutTextWrap>
+              </StLogInOutTextWrap>
             )}
-          </LogInOutWrap>
-        </HeadMenu>
-      </HeaderWrap>
+          </StLogInOutWrap>
+        </StHeadMenu>
+      </StHeaderWrap>
     </>
   );
 };
 
 export default Header;
 
-const HeaderWrap = styled.div`
+const StHeaderWrap = styled.div`
   background-color: white;
   /* position: fixed; */
   top: 0;
   width: 250px;
 `;
 
-const Logo = styled.img`
+const StLogo = styled.img`
   width: 150px;
 `;
 
-const HeadMenu = styled.div`
+const StHeadMenu = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -100,14 +103,14 @@ const HeadMenu = styled.div`
   justify-content: space-between;
 `;
 
-const ImgTextWrap = styled.div`
+const StImgTextWrap = styled.div`
   margin: 0 10px 0 0;
   display: flex;
   flex-direction: column;
   gap: 30px;
 `;
 
-const ImgWrap = styled.div`
+const StImgWrap = styled.div`
   border-radius: 15px;
   height: 35px;
   align-items: center;
@@ -126,16 +129,16 @@ const ImgWrap = styled.div`
   }
 `;
 
-const Img = styled.img`
+const StImg = styled.img`
   width: 25px;
   height: 25px;
 `;
 
-const LogInOutWrap = styled.div`
+const StLogInOutWrap = styled.div`
   margin-bottom: 50px;
 `;
 
-const LogInOutTextWrap = styled.div`
+const StLogInOutTextWrap = styled.div`
   width: 230px;
   border-radius: 15px;
   height: 35px;

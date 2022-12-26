@@ -26,10 +26,10 @@ const Update = () => {
 
   return (
     <>
-      <PostContainer name="포스트 전체 랩">
-        <PostHeader name="포스트 헤더 탭">
+      <StPostContainer name="포스트 전체 랩">
+        <StPostHeader name="포스트 헤더 탭">
           <div name="뒤로가기버튼">
-            <Img
+            <StImg
               alt="go main button"
               src="img/back.png"
               onClick={() => {
@@ -37,13 +37,13 @@ const Update = () => {
               }}
             />
           </div>
-          <PostHeaderText>게시글 수정</PostHeaderText>
+          <StPostHeaderText>게시글 수정</StPostHeaderText>
           <div>
-            <PostButton>수정하기</PostButton>
+            <StPostButton>수정하기</StPostButton>
           </div>
-        </PostHeader>
-        <PostBody name="포스트 사진, 본문 들어갈 자리">
-          <PostImgBox>
+        </StPostHeader>
+        <StPostBody name="포스트 사진, 본문 들어갈 자리">
+          <StPostImgBox>
             등록했던 이미지 띄워주는 박스
             {/* {imageSrc && <StPreviewImg src={imageSrc} alt="preview-img" />}
             <input
@@ -52,13 +52,13 @@ const Update = () => {
               name="post_img"
               onChange={onChangeImage}
             /> */}
-          </PostImgBox>
-          <PostContent name="본문아이디, 텍스트 탭">
-            <NicknameArea>아이디 들어갈 자리</NicknameArea>
-            <TextArea>본문 들어갈 자리</TextArea>
-          </PostContent>
-        </PostBody>
-      </PostContainer>
+          </StPostImgBox>
+          <StPostContent name="본문아이디, 텍스트 탭">
+            <StNicknameArea>아이디 들어갈 자리</StNicknameArea>
+            <StTextArea>본문 들어갈 자리</StTextArea>
+          </StPostContent>
+        </StPostBody>
+      </StPostContainer>
     </>
   );
 };
@@ -67,11 +67,11 @@ const Update = () => {
 
 export default Update;
 
-const PostHeaderText = styled.div`
+const StPostHeaderText = styled.div`
   font-weight: bold;
 `;
 
-const PostButton = styled.button`
+const StPostButton = styled.button`
   background-color: white;
   border: none;
   font-size: 14px;
@@ -79,17 +79,17 @@ const PostButton = styled.button`
   color: #0095f6;
 `;
 
-const PreviewImg = styled.img`
+const StPreviewImg = styled.img`
   width: 500px;
 `;
 
-const PostContainer = styled.div`
+const StPostContainer = styled.div`
   border: 1px solid black;
   border-radius: 10px;
   width: 750px;
 `;
 
-const Img = styled.img`
+const StImg = styled.img`
   width: 25px;
   &:hover {
     transform: scale(1.1);
@@ -101,7 +101,7 @@ const Img = styled.img`
   }
 `;
 
-const PostHeader = styled.div`
+const StPostHeader = styled.div`
   display: flex;
   height: 40px;
   padding: 0 10px 0 10px;
@@ -109,7 +109,7 @@ const PostHeader = styled.div`
   justify-content: space-between;
 `;
 
-const PostBody = styled.div`
+const StPostBody = styled.div`
   justify-content: space-between;
   display: flex;
   border: 1px solid red;
@@ -117,14 +117,14 @@ const PostBody = styled.div`
   border-bottom-left-radius: 10px;
 `;
 
-const PostImgBox = styled.div`
+const StPostImgBox = styled.div`
   border: 1px solid white;
   height: 500px;
   width: 500px;
   border-bottom-left-radius: 10px;
 `;
 
-const PostContent = styled.div`
+const StPostContent = styled.div`
   border: 1px solid blue;
   border-bottom-right-radius: 10px;
 
@@ -132,7 +132,7 @@ const PostContent = styled.div`
   width: 250px;
 `;
 
-const NicknameArea = styled.div`
+const StNicknameArea = styled.div`
   border: 1px solid purple;
   width: 240px;
   height: 30px;
@@ -142,7 +142,7 @@ const NicknameArea = styled.div`
   font-weight: bold;
 `;
 
-const TextArea = styled.textarea`
+const StTextArea = styled.textarea`
   width: 90%;
   border: 1px solid orange;
   height: 85%;
