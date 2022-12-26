@@ -91,7 +91,14 @@ const SignUp = () => {
   //submit 이벤트 핸들러
   const submitHandler = (event) => {
     event.preventDefault();
-    dispatch(__signUp(input));
+    dispatch(
+      __signUp({
+        email: input.email,
+        nickname: input.nickname,
+        password: input.password,
+        confirm: input.confirm,
+      })
+    );
     alert("회원가입 완료");
     navigate("/signin");
   };

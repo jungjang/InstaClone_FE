@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import instance from "../../instance/instance";
+import { instance } from "../../instance/instance";
 import axios from "axios";
+import { setCookie } from "../../shared/cookie";
 
 const initialState = {
   email: "",
@@ -21,7 +22,7 @@ export const __signUp = createAsyncThunk(
   async (payload, thunkAPI) => {
     console.log("🚀 ~ file: userSlice.js:15 ~ payload", payload);
     try {
-      const res = await axios.post("http://localhost:3001/user", payload);
+      const res = await instance.post("/api/auth/signup", payload);
       console.log("🚀 ~ file: userSlice.js:25 ~ res", res);
       return thunkAPI.fulfillWithValue(res.data);
     } catch (error) {
@@ -36,11 +37,8 @@ export const __postDupEmail = createAsyncThunk(
   async (payload, thunkAPI) => {
     console.log("🚀 ~ file: userSlice.js:37 ~ payload", payload);
     try {
-      const res = await axios.post(
-        "http://localhost:3001/user/checkEmail/",
-        payload
-      );
-      console.log("🚀 ~ file: userSlice.js:43 ~ res", res);
+      const res = await instance.post("/api/auth/signup/checkId", payload);
+      console.log("🚀 ~ file: userSlice.js:43 ~ res", res.data);
       window.alert("사용 가능한 ID입니다.");
       return thunkAPI.fulfillWithValue(res.data);
     } catch (error) {
@@ -56,8 +54,8 @@ export const __postDupNickname = createAsyncThunk(
   async (payload, thunkAPI) => {
     console.log("🚀 ~ file: userSlice.js:57 ~ payload", payload);
     try {
-      const res = await axios.post(
-        "http://localhost:3001/user/checkNickname/",
+      const res = await instance.post(
+        "/api/auth/signup/checkNickname",
         payload
       );
       window.alert("사용 가능한 닉네임입니다.");
@@ -68,7 +66,29 @@ export const __postDupNickname = createAsyncThunk(
     }
   }
 );
+//로그인 POST
+export const __postLogin = createAsyncThunk(
+  "user/postLogin",
+  async (payload, thunkAPI) => {
+    console.log("🚀 ~ file: userSlice.js:78 ~ payload", payload);
+    try {
+      setCookie();
+      const res = await instance.post("/api/auth/login", payload);
+      //localStorage.setItem("token", res.data.accessToken);
+      console.log("🚀 ~ file: userSlice.js:75 ~ res", res.data.accessToken);
+      setCookie("token", res.data.accessToken, {
+        path: "/",
+        expire: "after60m",
+      });
 
+      window.alert("로그인 성공!");
+      return thunkAPI.fulfillWithValue(res.data.accessToken);
+    } catch (error) {
+      window.alert("가입하신 이메일, 비밀번호와 다릅니다!!");
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 //slice 데이터 저장
 const userSlice = createSlice({
   name: "user",
@@ -109,6 +129,19 @@ const userSlice = createSlice({
     state.nickCheck = action.payload.result;
   },
   [__postDupNickname.rejected]: (state, action) => {
+    state.isLoading = false;
+    state.error = action.payload;
+  },
+  //__postLogin
+  [__postLogin.pending]: (state) => {
+    state.isLoading = true;
+  },
+  [__postLogin.fulfilled]: (state, action) => {
+    //state.nickname = action.payload;
+    state.isLoading = false;
+    state.isLogin = true;
+  },
+  [__postLogin.rejected]: (state, action) => {
     state.isLoading = false;
     state.error = action.payload;
   },
