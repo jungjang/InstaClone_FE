@@ -4,27 +4,27 @@ import styled from "styled-components";
 const PostCard = () => {
   return (
     <StPostCard name="포스트카드 전체">
-      <StPostCardHeader name="포스트 카드 헤더">
-        <StNicknameBox>
-          <StProfileImg alt="프로필 이미지" src="img/profile_img.png" />
+      <PostCardHeader name="포스트 카드 헤더">
+        <NicknameBox>
+          <ProfileImg alt="프로필 이미지" src="img/profile_img.png" />
           <div>닉네임 들어갈 자리</div>
-        </StNicknameBox>
-        <StButtonBox>
-          <StButton>수정</StButton>
-          <StButton>삭제</StButton>
-        </StButtonBox>
-      </StPostCardHeader>
-      <StPostCardBody name="포스트카드 바디">
-        <StPostImg alt="본 게시글 이미지" src="" />
+        </NicknameBox>
+        <ButtonBox>
+          <Button>수정</Button>
+          <Button>삭제</Button>
+        </ButtonBox>
+      </PostCardHeader>
+      <PostCardBody name="포스트카드 바디">
+        <PostImg alt="본 게시글 이미지" src="" />
         <div name="좋아요 댓글 이미지버튼 들어갈 자리">
-          <StHeartImg alt="좋아요 아이콘" src="img/noheart_img.png" />
+          <HeartImg alt="좋아요 아이콘" src="img/noheart_img.png" />
           {/* <StCommentImg alt="댓글 아이콘" src="img/comment_img.png" /> */}
         </div>
         <div name="댓글 컴포넌트 들어갈 자리">
           댓글 컴포넌트 들어갈 자리
           {/* <Comment /> <- 이런 식으로*/}
         </div>
-      </StPostCardBody>
+      </PostCardBody>
     </StPostCard>
   );
 };
@@ -35,15 +35,15 @@ export default PostCard;
 //   width: 25px;
 // `;
 
-const StHeartImg = styled.img`
+const HeartImg = styled.img`
   width: 25px;
 `;
 
-const StPostImg = styled.img`
+const PostImg = styled.img`
   width: 500px;
 `;
 
-const StButton = styled.button`
+const Button = styled.button`
   background-color: white;
   border: none;
   font-size: 14px;
@@ -51,23 +51,23 @@ const StButton = styled.button`
   color: #0095f6;
 `;
 
-const StButtonBox = styled.div`
+const ButtonBox = styled.div`
   display: flex;
   gap: 5px;
 `;
 
-const StNicknameBox = styled.div`
+const NicknameBox = styled.div`
   display: flex;
   justify-content: row;
   gap: 5px;
 `;
 
-const StProfileImg = styled.img`
+const ProfileImg = styled.img`
   width: 25px;
   height: 25px;
 `;
 
-const StPostCardHeader = styled.div`
+const PostCardHeader = styled.div`
   border: 1px solid blue;
   display: flex;
   flex-direction: row;
@@ -79,7 +79,7 @@ const StPostCardHeader = styled.div`
   border-top-left-radius: 10px;
 `;
 
-const StPostCardBody = styled.div`
+const PostCardBody = styled.div`
   border: 1px solid black;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
