@@ -1,21 +1,19 @@
 {
-  "name": "stargram",
+  "name": "newinstaclone",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@hookform/resolvers": "^2.9.10",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
     "axios": "^1.2.1",
-    "es-validator": "^1.0.6",
-    "json-server": "^0.17.1",
+    "dotenv": "^16.0.3",
     "react": "^18.2.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.6.0",
+    "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "styled-components": "^5.3.6",
@@ -44,9 +42,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "main": "index.js",
-  "repository": "https://github.com/jungjang/InstaClone_FE.git",
-  "author": "Aekyoung_Kwon <116799513+buddesign@users.noreply.github.com>",
-  "license": "MIT"
+  }
 }
